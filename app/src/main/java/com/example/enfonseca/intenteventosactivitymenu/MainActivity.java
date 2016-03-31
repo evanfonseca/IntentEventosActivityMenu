@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_sair:  {
 
                                     this.sair(v);
+
                                     break;
                                   }
         }
