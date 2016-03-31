@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_info:{
 
                                     this.info(v);
+
                                     break;
                                 }
             case R.id.menu_perfil:{
