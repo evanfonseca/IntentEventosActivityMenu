@@ -9,11 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     String USER="";
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent= getIntent();
+        Bundle b=intent.getExtras();
 
+        if(b!=null){
+            USER = (String) b.get("USER");
+        }
+        else {
+            USER=null;
+        }
+
+        tv = (TextView) findViewById(R.id.textoPrincipal);
+
+        if(USER!=null) {
+            tv.append(" " + USER);
+        }
     }
 
     @Override
@@ -71,15 +87,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View v){
-        Toast.makeText(getApplicationContext(),"Login cliked",Toast.LENGTH_LONG).show();
 
+    public void login(View v){
+        //Toast.makeText(getApplicationContext(),"Login cliked",Toast.LENGTH_LONG).show();
+        Intent intent =new Intent(this, Login.class);
+        startActivity(intent);
     }
 
     public void perfil(View v){
         Intent intent =new Intent(this, Perfil.class);
-        intent.putExtra("USER", USER);
-        startActivity(intent);
+
+        if(USER!=null){
+            intent.putExtra("USER", USER);
+            startActivity(intent);
+
+        }
+
     }
 
     public void info(View v){
