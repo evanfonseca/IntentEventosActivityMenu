@@ -30,6 +30,7 @@ public class Perfil extends AppCompatActivity {
         tvTel= (TextView) findViewById(R.id.tel);
 
         this.carregaPerfil();
+
     }
 
     public void carregaPerfil() {
